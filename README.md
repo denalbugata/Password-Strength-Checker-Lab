@@ -62,4 +62,49 @@ elif not re.search("[!@#\$%^&\*]", password):
         return "Missing special character"
 ```
 
+<b>Step 9: If nothing else presents itself as an error the code will consider the password to be a "Strong" type</b>
 
+```python
+  else:
+        return "Strong"
+```
+<b>Step 10: Lastly test the password checking funtion to make sure the password provided matches the check put into place before. Print the result either "Weak" or "Strong"</b>
+        
+```python
+    # Step 3: Test the password checking function
+password = input("Enter a password: ")
+result = check_password_strength(password)
+print(result)
+```
+<b> The final result should look like this:</b>
+```python
+import re
+
+# Step 1: Define the minimum password length
+MIN_LENGTH = 8
+
+# Step 2: Define the password checking function
+def check_password_strength(password):
+    # Step 2.1: Check the password length
+    if len(password) < MIN_LENGTH:
+        return "Too short"
+    # Step 2.2: Check for the presence of at least one uppercase letter
+    elif not re.search("[A-Z]", password):
+        return "Missing uppercase letter"
+    # Step 2.3: Check for the presence of at least one lowercase letter
+    elif not re.search("[a-z]", password):
+        return "Missing lowercase letter"
+    # Step 2.4: Check for the presence of at least one digit
+    elif not re.search("[0-9]", password):
+        return "Missing digit"
+    # Step 2.5: Check for the presence of at least one special character
+    elif not re.search("[!@#\$%^&\*]", password):
+        return "Missing special character"
+    else:
+        return "Strong"
+
+# Step 3: Test the password checking function
+password = input("Enter a password: ")
+result = check_password_strength(password)
+print(result)
+```
